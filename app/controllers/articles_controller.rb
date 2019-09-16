@@ -1,4 +1,7 @@
 class ArticlesController < ApplicationController
+	http_basic_authenticate_with name: 'test', password: 'test_password',
+	                             only: :destroy
+
 	def index
 		@articles = Article.all
 	end
