@@ -15,20 +15,7 @@
     <% end %>
 
     <h2>Add a comment</h2>
-    <%= form_with(model: [ @article, @article.comments.build ], local: true) do |form| %>
-      <p>
-        <%= form.label :author %>
-        <%= form.text_field :author %>
-      </p>
-      <p>
-        <%= form.label :body %>
-        <%= form.text_area :body %>
-      </p>
-
-      <P>
-        <%= form.submit %>
-      </P>
-    <% end %>
+    <%= render 'comments/form' %>
 
     <p><%= link_to 'Edit', edit_article_path(@article) %></p>
     <p>
