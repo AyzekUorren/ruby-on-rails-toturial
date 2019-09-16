@@ -7,6 +7,29 @@
       <strong>Text:</strong> <%= @article.text %>
     </p>
 
+    <hr>
+    <% if @article.comments.any? %>
+      <h2>Comments</h2>
+      <hr>
+      <%= render @article.comments %>
+    <% end %>
+
+    <h2>Add a comment</h2>
+    <%= form_with(model: [ @article, @article.comments.build ], local: true) do |form| %>
+      <p>
+        <%= form.label :author %>
+        <%= form.text_field :author %>
+      </p>
+      <p>
+        <%= form.label :body %>
+        <%= form.text_area :body %>
+      </p>
+
+      <P>
+        <%= form.submit %>
+      </P>
+    <% end %>
+
     <p><%= link_to 'Edit', edit_article_path(@article) %></p>
     <p>
       <%= link_to 'Destroy', article_path(@article),
